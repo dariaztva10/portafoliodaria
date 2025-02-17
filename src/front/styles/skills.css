@@ -1,0 +1,66 @@
+
+.skills-container {
+    text-align: center;
+    background-color: #1e1e2f;
+    padding: 2rem;
+    color: #f0f0f0;
+    font-family: 'Arial', sans-serif;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #ff7f50;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.skill-card {
+    background: #2b2b3c;
+    padding: 1rem;
+    border-radius: 10px;
+    transition: transform 0.3s ease, background 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.skill-card:hover {
+    transform: scale(1.1);
+    background: #ff7f50;
+    color: #1e1e2f;
+}
+
+.icon {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+
+.html { color: #e34c26; }
+.css { color: #264de4; }
+.js { color: #f7df1e; }
+.react { color: #61dafb; }
+.node { color: #68a063; }
+.git { color: #f1502f; }
+.github { color: #ffffff; }
+.python { color: #3776ab; }
+.sql { color: #00758f; }
+.flask { color: #000000; }
+.bootstrap { color: #7952b3; }
+.tailwind { color: #38b2ac; }
+.mongo { color: #4db33d; }
+.postgres { color: #336791; }
+
+.skills-description {
+    margin-top: 2rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #dcdcdc;
+}
