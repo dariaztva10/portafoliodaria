@@ -1,7 +1,130 @@
-/*
-    home.css: This website contains selectors only used in home.css
+.custom-card {
+  background: linear-gradient(135deg, #1e1e1e, #3a3a3a);
+  color: white;
+  border-radius: 15px;
+  padding: 40px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  max-width: 650px;
+  margin: 40px auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  /* Asegura que .status se posicione correctamente */
+}
 
-    All pages share the styles on index.css but you should create 
-    one more css for each page that will contain the selected used 
-    on that page only (the ones not reused in other pages).
-*/
+body {
+  background: linear-gradient(135deg, #1a1a1a, #333333);
+  color: white;
+}
+
+
+
+.status {
+  position: absolute;
+  background: #1aff00;
+  color: black;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  box-shadow: 0 3px 12px rgba(0, 255, 0, 0.4);
+  top: 10px;
+  right: 1%;
+  
+}
+
+.profile-pic {
+  background: linear-gradient(135deg, #e7dfa2, #f8e406);
+  border-radius: 50%;
+  width: 130px;
+  height: 130px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 4px solid white;
+  box-shadow: 0 5px 12px rgba(255, 255, 255, 0.3);
+}
+
+.profile-pic img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.subtitle {
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.highlight {
+  color: #f8e406;
+  font-weight: bold;
+}
+
+.description {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn-custom {
+  padding: 14px 24px;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-custom-download {
+  background: #f8e406;
+  color: black;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 5px 12px rgba(248, 228, 6, 0.4);
+}
+
+.btn-custom-contact {
+  background: #bd4040;
+  color: white;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 5px 12px rgba(189, 64, 64, 0.4);
+}
+
+.btn-custom-download:hover,
+.btn-custom-contact:hover {
+  transform: scale(1.08);
+}
+
+.social-icons {
+  margin-top: 25px;
+}
+
+.social-icons a {
+  color: white;
+  font-size: 26px;
+  margin: 0 12px;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.social-icons a:hover {
+  color: #f8e406;
+  transform: scale(1.2);
+}

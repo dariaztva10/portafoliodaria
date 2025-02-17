@@ -1,0 +1,47 @@
+.navbar-general {
+    background-color: black;
+    padding: 10px 20px; /* Añade un poco de espacio alrededor */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Agrega un efecto de sombra */
+}
+
+.navbar-general .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Permite que sea responsivo */
+}
+
+.navbar-brand {
+    color: #00aaff; /* Color llamativo para el texto "Inicio" */
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none; /* Elimina el subrayado */
+    transition: color 0.3s ease; /* Animación al pasar el cursor */
+}
+
+.navbar-brand:hover {
+    color: #ffaa00; /* Cambia de color al pasar el cursor */
+}
+
+.ml-auto {
+    display: flex;
+    gap: 15px; /* Espacio más uniforme entre los botones */
+}
+
+.botonesNavbar {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px; /* Botones con bordes redondeados */
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+    transition: all 0.3s ease; /* Animaciones suaves */
+}
+
+.botonesNavbar:hover {
+    background-color: #00aaff; /* Color al pasar el cursor */
+    color: white;
+    transform: translateY(-2px); /* Pequeño efecto de flotación */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Aumenta la sombra */
+}
