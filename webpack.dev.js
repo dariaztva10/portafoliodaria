@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
-const Dotenv = require('dotenv-webpack'); 
+const Dotenv = require('dotenv-webpack');
 
 const port = 3000;
 let publicUrl = `ws://localhost:${port}/ws`;
@@ -21,25 +21,26 @@ if (process.env.CODESPACE_NAME) {
 console.log("🚀 BACKEND_URL en Webpack:", process.env.BACKEND_URL);
 
 module.exports = merge(common, {
-    mode: 'development',
-    devtool: 'cheap-module-source-map',
-    devServer: {
-        port,
-        hot: true,
-        allowedHosts: "all",
-        historyApiFallback: true,
-        static: {
-          directory: path.resolve(__dirname, "src/front"), // Cambia 'src/front' a tu ruta real
-        },
-        
-        client: {
-          webSocketURL: publicUrl
-        },
+  mode: 'development',
+  devtool: 'cheap-module-source-map',
+  devServer: {
+    port,
+    hot: true,
+    allowedHosts: "all",
+    historyApiFallback: true,
+    static: {
+      directory: path.resolve(__dirname, "src"), // Cambia 'src/front' a tu ruta real
     },
-    plugins: [
-        new Dotenv({
-            systemvars: true 
-        }),
-        new webpack.HotModuleReplacementPlugin()
-    ]
+
+    client: {
+      webSocketURL: publicUrl
+    },
+  },
+  plugins: [
+    new Dotenv({
+      systemvars: true
+    }),
+    new webpack.HotModuleReplacementPlugin()
+  ]
 });
+
