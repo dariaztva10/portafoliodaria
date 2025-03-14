@@ -1,6 +1,6 @@
 import React from "react";
-import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaGitAlt, FaGithub, FaPython, FaDatabase } from "react-icons/fa";
-import { SiFlask, SiBootstrap, SiTailwindcss, SiMongodb, SiPostgresql } from "react-icons/si";
+import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaGitAlt, FaGithub, FaPython, FaDatabase, FaFigma } from "react-icons/fa";
+import { SiFlask, SiBootstrap, SiPostgresql, /* SiFigma, SiVisualstudiocode, */ SiJest, SiJsonwebtokens } from "react-icons/si";
 import "../../styles/skills.css";
 
 export const Skills = () => {
@@ -16,14 +16,16 @@ export const Skills = () => {
         { name: "SQL", icon: <FaDatabase className="icon sql" /> },
         { name: "Flask", icon: <SiFlask className="icon flask" /> },
         { name: "Bootstrap", icon: <SiBootstrap className="icon bootstrap" /> },
-        { name: "Tailwind CSS", icon: <SiTailwindcss className="icon tailwind" /> },
-        { name: "MongoDB", icon: <SiMongodb className="icon mongo" /> },
-        { name: "PostgreSQL", icon: <SiPostgresql className="icon postgres" /> }
+        { name: "PostgreSQL", icon: <SiPostgresql className="icon postgres" /> },
+        { name: "Figma", icon: <FaFigma className="icon figma" /> },
+        // { name: "Visual Studio Code", icon: <SiVisualstudiocode className="icon vscode" /> },
+        { name: "Jest", icon: <SiJest className="icon jest" /> },
+        { name: "JWT", icon: <SiJsonwebtokens className="icon jwt" /> },
     ];
 
     return (
         <div className="skills-container">
-            <h1>Habilidades 💻</h1>
+            <h1>HABILIDADES</h1>
             <div className="skills-grid">
                 {skills.map((skill, index) => (
                     <div key={index} className="skill-card">
@@ -38,7 +40,7 @@ export const Skills = () => {
                     incluyendo HTML, CSS, JavaScript, React, Node.js, Python y SQL. Tengo experiencia
                     trabajando con frameworks como Flask y Bootstrap, así como con herramientas de control
                     de versiones como Git y GitHub. Además, utilizo bases de datos relacionales y no relacionales
-                    como PostgreSQL y MongoDB, y aplico buenas prácticas de desarrollo para crear aplicaciones
+                    como PostgreSQL, y aplico buenas prácticas de desarrollo para crear aplicaciones
                     escalables y eficientes.
                 </p>
             </div>

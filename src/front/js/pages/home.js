@@ -1,54 +1,59 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
-import myPhoto from "/workspaces/portafoliodaria/src/front/img/myPhoto.png";
 import "../../styles/home.css";
+import { Link } from "react-router-dom";
+
+const myPhoto = "/myPhoto.png";
+
 
 export const Home = () => {
     const { store, actions } = useContext(Context);
 
     return (
-        <div className="container my-5">
+        <div className="container-home my-5">
             <div className="custom-card">
-               
-                <div className="profile-pic">
-                    <img className="fotodaria" src={myPhoto} alt="Daria" />
-                </div>
-                <div className="status">¡En búsqueda activa de empleo!</div>
-                <h1 className="title">&lt;Hello World!/&gt; Me llamo <strong>Daria</strong></h1>
+                <div className="status">🚀En búsqueda activa de empleo</div>
 
-                <h3 className="subtitle">Soy <span className="highlight">Full Stack Developer</span></h3>
-
-                <p className="description">
-                    Tengo experiencia en aplicaciones web, gestión de bases de datos y diseño de interfaces intuitivas. 
-                    Utilizo <strong>Python, JavaScript y React</strong> como mis lenguajes principales, ofreciendo soluciones innovadoras 
-                    a través del desarrollo full stack. Siempre estoy buscando mejorar mis habilidades y mantenerme al día 
-                    con las últimas tendencias tecnológicas.
-                </p>
-
-                <div className="buttons-container">
-                    <a
-                        href="https://drive.google.com/uc?export=download&id=1z9u8nBcaj7ObHZnVO9Jub1uOnBHVNRLA"
-                        download="curriculum.pdf"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn btn-custom btn-custom-download"
-                    >
-                        Descargar mi CV
-                    </a>
-
-                    <button className="btn btn-custom btn-custom-contact">Contáctame</button>
+                <div className="profile-section">
+                    <div className="profile-pic">
+                        <img src={myPhoto} alt="Daria - Full Stack Developer" />
+                    </div>
                 </div>
 
-                <div className="social-icons mt-3">
-                    <a href="https://www.linkedin.com/in/dariaztva" target="_blank" rel="noopener noreferrer">
-                        <i className="bi bi-linkedin"></i>
-                    </a>
-                    <a href="https://github.com/dariaztva" target="_blank" rel="noopener noreferrer">
-                        <i className="bi bi-github"></i>
-                    </a>
-                    <a href="mailto:dariaztva@gmail.com">
-                        <i className="bi bi-envelope"></i>
-                    </a>
+                <div className="content-wrapper">
+                    <h1 className="title">
+                        <span className="code-symbol">&lt;</span>
+                        Hello World!
+                        <span className="code-symbol">/&gt;</span><br />
+                        Me llamo <span className="name-highlight">Daria</span>
+                    </h1>
+
+                    <h2 className="subtitle">
+                        <span className="typing-animation">Full Stack Developer</span>
+                    </h2>
+
+                    <p className="description">
+                        Tengo experiencia en aplicaciones web, gestión de bases de datos y diseño de interfaces intuitivas. Utilizo Python, JavaScript y React como mis lenguajes principales, ofreciendo soluciones innovadoras a través del desarrollo full stack. Siempre estoy buscando mejorar mis habilidades y mantenerme al día con las últimas tendencias tecnológicas.
+                    </p>
+
+                    <div className="buttons-container">
+                        <a
+                            href="https://drive.google.com/file/d/1ohE-fRhr2xE7JwWjZu21WxnTw06aaSdR/view?usp=sharing"
+                            className="btn btn-download"
+                            aria-label="Descargar CV"
+                        >
+                           
+                            <span className="btn-text">Descargar CV</span>
+                        </a>
+
+                        <Link to="/contact" className="btn btn-contact" aria-label="Contactar">
+                           
+                            <span className="btn-text">Contáctame</span>
+                        </Link>
+
+                    </div>
+
+
                 </div>
             </div>
         </div>

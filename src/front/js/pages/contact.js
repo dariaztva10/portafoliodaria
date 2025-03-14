@@ -3,23 +3,41 @@ import "../../styles/contact.css";
 
 export const Contact = () => {
     const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+    const [status, setStatus] = useState(""); // Para mostrar mensajes de estado
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Mensaje enviado:", formData);
-        alert("Tu mensaje ha sido enviado.");
-        setFormData({ name: "", email: "", message: "" });
+        setStatus("Enviando...");
+
+        try {
+            const response = await fetch("http://localhost:3001/send-email", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData),
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                setStatus("Correo enviado con éxito 🎉");
+                setFormData({ name: "", email: "", message: "" });
+            } else {
+                setStatus(data.error || "Error al enviar el correo");
+            }
+        } catch (error) {
+            setStatus("Error al conectar con el servidor");
+        }
     };
 
     return (
         <div className="contact-container">
-            <h1 className="contact-title">Contacto 💌</h1>
+            <h1 className="contact-title">CONTACTO</h1>
             <div className="contact-card">
                 <p>¿Quieres hablar conmigo? Rellena el formulario y estaré encantada de responderte.</p>
+
                 <form onSubmit={handleSubmit} className="contact-form">
                     <input
                         type="text"
@@ -47,13 +65,21 @@ export const Contact = () => {
                     <button type="submit">Enviar</button>
                 </form>
 
+                {/* Mostrar estado del envío */}
+                {status && <p className="status-message">{status}</p>}
+
                 <div className="contact-info">
-                    <p><strong>✉️ Email:</strong> <a href="mailto:dariaztva@gmail.com">dariaztva@gmail.com</a></p>
-                    <p><strong>📞 Teléfono:</strong> <a href="tel:+34648705883">+34 648 70 58 83</a></p>
+                    <div className="contact-info-item">
+                        <i className="fas fa-envelope"></i>
+                        <a href="mailto:dariaztva@gmail.com">dariaztva@gmail.com</a>
+                    </div>
+                    <div className="contact-info-item">
+                        <i className="fas fa-phone"></i>
+                        <a href="tel:+34648705883">+34 648 70 58 83</a>
+                    </div>
                 </div>
 
             </div>
-
         </div>
     );
 };

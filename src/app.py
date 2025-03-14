@@ -10,13 +10,38 @@ from api.models import db
 from api.routes import api
 from api.admin import setup_admin
 from api.commands import setup_commands
+from dotenv import load_dotenv
+from flask_mail import Mail, Message
+from flask_cors import CORS
+
+
+# Crear instancia de Flask
+app = Flask(__name__)
+CORS(app, origins="http://localhost:3000")
+app.url_map.strict_slashes = False
+
+# Configuración de Flask-Mail
+app.config["MAIL_SERVER"] = "smtp.gmail.com"  # Servidor SMTP (puede ser otro)
+app.config["MAIL_PORT"] = 587  # Puerto de salida
+app.config["MAIL_USE_TLS"] = True
+app.config["MAIL_USE_SSL"] = False
+app.config["MAIL_USERNAME"] = os.getenv("MAIL_USERNAME")  # Email del servidor
+app.config["MAIL_PASSWORD"] = os.getenv("MAIL_PASSWORD")  # Contraseña o App Password
+app.config["MAIL_DEFAULT_SENDER"] = os.getenv("MAIL_USERNAME")  # Mismo email del servidor
+
+# Inicializar Flask-Mail después de definir `app`
+mail = Mail(app)
+
+
+
 
 # from models import Person
 
+load_dotenv()
 ENV = "development" if os.getenv("FLASK_DEBUG") == "1" else "production"
 static_file_dir = os.path.join(os.path.dirname(
     os.path.realpath(__file__)), '../public/')
-app = Flask(__name__)
+
 app.url_map.strict_slashes = False
 
 # database condiguration
@@ -65,8 +90,36 @@ def serve_any_other_file(path):
     response.cache_control.max_age = 0  # avoid cache memory
     return response
 
+# Endpoint para enviar correos
+@app.route('/send-email', methods=['POST'])
+def send_email():
+    data = request.json
+    name = data.get("name")
+    email = data.get("email")
+    message = data.get("message")
+
+    if not name or not email or not message:
+        return jsonify({"error": "Todos los campos son obligatorios"}), 400
+
+    try:
+        msg = Message(
+            subject=f"Nuevo mensaje de {name}",
+            sender=email,
+            recipients=[os.getenv("MAIL_USERNAME")],
+            body=f"Nombre: {name}\nEmail: {email}\nMensaje: {message}",
+        )
+        mail.send(msg)
+        return jsonify({"success": "Correo enviado con éxito"}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':
     PORT = int(os.environ.get('PORT', 3001))
     app.run(host='0.0.0.0', port=PORT, debug=True)
+
+
+
+
+

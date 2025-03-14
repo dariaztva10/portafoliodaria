@@ -1,47 +1,130 @@
-.navbar-general {
-    background-color: black;
-    padding: 10px 20px; /* Añade un poco de espacio alrededor */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Agrega un efecto de sombra */
+/* ==============================
+   🔥 NAVBAR GENERAL 🔥
+   ============================== */
+   .navbar-general {
+    background: rgba(0, 0, 0, 0.85);
+    padding: 15px 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+    transition: background 0.3s ease-in-out;
 }
 
-.navbar-general .container {
+/* ==============================
+   📌 CONTENEDOR FLEXIBLE
+   ============================== */
+.container {
     display: flex;
+    justify-content: space-between; /* Distribuye elementos */
     align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap; /* Permite que sea responsivo */
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
+/* ==============================
+   🏠 LOGO - INICIO 
+   ============================== */
 .navbar-brand {
-    color: #00aaff; /* Color llamativo para el texto "Inicio" */
-    font-size: 1.5rem;
+    color:#917FB3;;
+    font-size: 1.8rem;
     font-weight: bold;
-    text-decoration: none; /* Elimina el subrayado */
-    transition: color 0.3s ease; /* Animación al pasar el cursor */
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 .navbar-brand:hover {
-    color: #ffaa00; /* Cambia de color al pasar el cursor */
+    color: #917FB3;;
+    text-shadow: 0 0 15px rgba(255, 252, 252, 0.8);
 }
 
-.ml-auto {
+/* ==============================
+   📌 NAVIGATION LINKS
+   ============================== */
+.nav-links {
+    list-style: none;
     display: flex;
-    gap: 15px; /* Espacio más uniforme entre los botones */
+    gap: 20px;
+    margin: 0;
+    padding: 0;
 }
 
-.botonesNavbar {
-    background-color: #f0f0f0;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1rem;
-    border-radius: 5px; /* Botones con bordes redondeados */
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra sutil */
-    transition: all 0.3s ease; /* Animaciones suaves */
-}
-
-.botonesNavbar:hover {
-    background-color: #00aaff; /* Color al pasar el cursor */
+.nav-button {
+    background: linear-gradient(45deg, #e0881c, #9579c5);
     color: white;
-    transform: translateY(-2px); /* Pequeño efecto de flotación */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Aumenta la sombra */
+    font-size: 1rem;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 8px rgba(255, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
 }
+
+.nav-button:hover {
+    background: linear-gradient(45deg,#9579c5, #e0881c);
+    transform: translateY(-3px);
+    box-shadow: 0 3px 6px rgba(255, 255, 255, 0.5);
+    color: rgb(0, 0, 0);
+}
+
+/* ==============================
+   🍔 MENÚ HAMBURGUESA (MOBILE)
+   ============================== */
+.menu-toggle {
+    display: none;
+}
+
+.menu-icon {
+    display: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* ==============================
+   📱 RESPONSIVE DESIGN (MÓVIL)
+   ============================== */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: row;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 65px;
+        right: 10px;
+        background: rgba(0, 0, 0, 0.9);
+        width: 250px;
+        text-align: center;
+        padding: 15px 0;
+        border-radius: 10px;
+        border: 2px solid #000000;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        transition: opacity 0.3s ease-in-out;
+        opacity: 0;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+
+    #menu-toggle:checked ~ .nav-links {
+        display: flex;
+        opacity: 1;
+    }
+
+    #menu-toggle:checked ~ .menu-icon {
+        transform: rotate(90deg);
+    }
+}
+

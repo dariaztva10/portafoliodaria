@@ -3,27 +3,43 @@
     padding: 50px;
     background-color: #0d1117;
     color: white;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    max-width: 800px;              
+    margin: 120px auto 40px;
+    min-height: 4px;  
+                 
 }
 
 .contact-title {
-    color: #ffa500;
-    font-size: 2em;
-    margin-bottom: 20px;
+    color: #ff7f50; 
+
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
 }
 
+
 .contact-card {
-    background-color: #161b22;
+    background: #2b2b3c;
     padding: 30px;
     border-radius: 10px;
-    width: 60%;
-    margin: auto;
+    max-width: 600px;              
+    margin: 0 auto;                
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+    
 }
 
 .contact-card p {
-    font-size: 1.2em;
+    font-size: 1em;
     margin-bottom: 20px;
 }
+
 
 .contact-form {
     display: flex;
@@ -31,7 +47,8 @@
     gap: 15px;
 }
 
-.contact-form input, .contact-form textarea {
+.contact-form input,
+.contact-form textarea {
     width: 100%;
     padding: 12px;
     border-radius: 5px;
@@ -48,42 +65,102 @@
 
 .contact-form button {
     padding: 12px;
-    background: linear-gradient(90deg, #ff05ea, #ffe602);
+    background: linear-gradient(90deg, #c87fea, #ffe602);
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1.2em;
-    transition: 0.3s;
+    transition: background 0.3s;
 }
 
 .contact-form button:hover {
-    background: linear-gradient(90deg, #ffe602, #ff05ea);
+    background: linear-gradient(90deg, #e3dead, #ffe205);
 }
+
 
 .contact-footer {
     margin-top: 20px;
     font-size: 1em;
     opacity: 0.7;
 }
+.contact-info i {
+    color: #c5ff05;
+}
 
 .contact-info {
-    margin-top: 20px;
-    padding-top: 15px;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    font-size: 1.1em;
-}
-
-.contact-info p {
-    margin: 8px 0;
-}
-
-.contact-info a {
-    color:  rgba(255, 255, 255, 0.79);
+    
+    margin-top: 30px;
+    
+    /* Fondo sutil con transparencia, siguiendo tu estilo “glass” */
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    
+    /* Espaciado interno */
+    padding: 20px;
+    
+    /* Layout en fila para pantallas medianas y grandes */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 20px; /* Espacio horizontal entre items */
+  }
+  
+  /* Cada item (email / teléfono) */
+  .contact-info-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;        /* Espacio entre el ícono y el texto */
+    color: #fff;      /* Color de texto blanco */
+  }
+  
+  /* Íconos */
+  .contact-info-item i {
+    font-size: 1.2rem;
+    color: #ffa500;   /* Íconos en color naranja */
+  }
+  
+  /* Enlaces */
+  .contact-info-item a {
+    color: #fff;      /* Texto blanco por defecto */
+    font-size: 1rem;
     text-decoration: none;
-    font-weight: bold;
-}
+    transition: color 0.3s ease;
+    font-weight: 500;
+  }
+  
+  .contact-info-item a:hover {
+    color: #ffa500;   /* Cambia a naranja al pasar el ratón */
+  }
+  
+  /* Responsive: en pantallas pequeñas, pasa a columna */
+  @media (max-width: 600px) {
+    .contact-info {
+      flex-direction: column;
+      gap: 15px; /* Espacio vertical entre los 2 items */
+    }
+  }
+  
 
-.contact-info a:hover {
-    text-decoration: underline;
+/* Media query para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .contact-container {
+        padding: 20px;
+        margin: 40px auto;
+    }
+    .contact-card {
+        width: 100%;
+        max-width: none;    /* Para que la tarjeta se ajuste al contenedor */
+        padding: 20px;
+    }
+    .contact-title {
+        font-size: 1.6em;
+    }
+    .contact-form button {
+        font-size: 1em;
+        padding: 10px;
+    }
 }

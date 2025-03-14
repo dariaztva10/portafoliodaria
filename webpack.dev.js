@@ -2,21 +2,23 @@ const webpack = require('webpack');
 const path = require('path');
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
-// const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
+const Dotenv = require('dotenv-webpack'); 
 
 const port = 3000;
 let publicUrl = `ws://localhost:${port}/ws`;
 
-//only for github
-if(process.env.GITPOD_WORKSPACE_URL){
+if (process.env.GITPOD_WORKSPACE_URL) {
   const [schema, host] = process.env.GITPOD_WORKSPACE_URL.split('://');
   publicUrl = `wss://${port}-${host}/ws`;
 }
 
-//only for codespaces
-if(process.env.CODESPACE_NAME){
+// Solo para Codespaces
+if (process.env.CODESPACE_NAME) {
   publicUrl = `wss://${process.env.CODESPACE_NAME}-${port}.app.github.dev/ws`;
 }
+
+// Verificación de variables de entorno
+console.log("🚀 BACKEND_URL en Webpack:", process.env.BACKEND_URL);
 
 module.exports = merge(common, {
     mode: 'development',
@@ -27,26 +29,17 @@ module.exports = merge(common, {
         allowedHosts: "all",
         historyApiFallback: true,
         static: {
-          directory: path.resolve(__dirname, "dist"),
+          directory: path.resolve(__dirname, "src/front"), // Cambia 'src/front' a tu ruta real
         },
+        
         client: {
           webSocketURL: publicUrl
         },
     },
     plugins: [
-        // new FriendlyErrorsWebpackPlugin(),
-        // new ErrorOverlayPlugin(),
-        // new PrettierPlugin({
-        //     parser: "babylon",
-        //     printWidth: 120,             // Specify the length of line that the printer will wrap on.
-        //     tabWidth: 4,                // Specify the number of spaces per indentation-level.
-        //     useTabs: true,              // Indent lines with tabs instead of spaces.
-        //     bracketSpacing: true,
-        //     extensions: [ ".js", ".jsx" ],
-        //     jsxBracketSameLine: true,
-        //     semi: true,                 // Print semicolons at the ends of statements.
-        //     encoding: 'utf-8'           // Which encoding scheme to use on files
-        // }),
+        new Dotenv({
+            systemvars: true 
+        }),
         new webpack.HotModuleReplacementPlugin()
     ]
 });

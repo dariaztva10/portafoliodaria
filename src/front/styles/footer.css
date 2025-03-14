@@ -1,50 +1,33 @@
 .footer {
-    background: #181818;
+    background: #000000;
     color: white;
-    padding: 20px 0;
     font-size: 14px;
+    text-align: center;
+    padding: 20px 0;
+    width: 100vw; /* Fuerza el ancho a 100% del viewport */
+    margin-left: calc(50% - 50vw); /* Desplaza el elemento para romper el centrado del contenedor padre */
 }
 
+
 .footer-container {
+    /* Si quieres centrar solo el contenido interno (texto, íconos), 
+       puedes usar un max-width, pero OJO, esto NO debe forzar el footer entero */
+    max-width: 1200px;   
+    margin: 0 auto;      
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
 }
-
-.contact-info p, .social-icons a {
-    margin: 0;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: bold;
-}
-
-.contact-info a {
-    text-decoration: none;
-    color: white;
-    transition: color 0.3s ease-in-out;
-}
-
-.contact-info a:hover {
-    color: #ff05ea;
-}
-
-.contact-info i {
-    color: #ff05ea;
-}
-
-.social-icons {
+  
+  .social-icons {
     display: flex;
     gap: 15px;
-}
-
-.social-icons a {
+  }
+  
+  .social-icons a {
     color: white;
     font-size: 20px;
     transition: color 0.3s ease-in-out;
-}
-
-.social-icons a:hover {
-    color: #ff05ea;
-}
+  }
+  
