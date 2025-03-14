@@ -3,7 +3,10 @@ import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import { Link } from "react-router-dom";
 
-const myPhoto = "/myPhoto.png";
+import myPhoto from  "../../img/myPhoto.png"; 
+
+
+
 
 
 export const Home = () => {
