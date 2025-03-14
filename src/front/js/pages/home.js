@@ -3,7 +3,7 @@ import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import { Link } from "react-router-dom";
 
-const myPhoto = "/myPhoto.png";
+import myPhoto from "../../img/myPhoto.png";
 
 
 export const Home = () => {
@@ -42,12 +42,12 @@ export const Home = () => {
                             className="btn btn-download"
                             aria-label="Descargar CV"
                         >
-                           
+
                             <span className="btn-text">Descargar CV</span>
                         </a>
 
                         <Link to="/contact" className="btn btn-contact" aria-label="Contactar">
-                           
+
                             <span className="btn-text">Contáctame</span>
                         </Link>
 
