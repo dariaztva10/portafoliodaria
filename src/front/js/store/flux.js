@@ -22,16 +22,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			getMessage: async () => {
-				try{
-					// fetching data from the backend
-					const resp = await fetch(process.env.BACKEND_URL + "/api/hello")
-					const data = await resp.json()
-					setStore({ message: data.message })
-					// don't forget to return something, that is how the async resolves
-					return data;
-				}catch(error){
-					console.log("Error loading message from backend", error)
-				}
+			  const base = process.env.BACKEND_URL;
+			  if (!base) return;
+			
+			  const url = `${base}/api/lo-que-sea`; // pon tu ruta real
+			  try {
+			    const res = await fetch(url);
+			    const ct = res.headers.get("content-type") || "";
+			
+			    if (!res.ok) {
+			      const text = await res.text();
+			      console.error("Backend error:", res.status, text);
+			      return;
+			    }
+			    if (!ct.includes("application/json")) {
+			      const text = await res.text();
+			      console.error("Not JSON:", text);
+			      return;
+			    }
+			
+			    const data = await res.json();
+			    // ...usa data
+			  } catch (e) {
+			    console.error("Network error:", e);
+			  }
 			},
 			changeColor: (index, color) => {
 				//get the store
