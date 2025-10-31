@@ -1,14 +1,13 @@
-// lee la variable del .env (inyectada por dotenv-webpack)
+// src/front/js/layout.js
+// 1) lee variables de entorno (inyectadas por dotenv-webpack)
 const BackendURL = process.env.BACKEND_URL;
+const BASENAME  = process.env.BASENAME || "/";
 
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-
-
-import { Home } from "./pages/home";
-
-import { Skills } from "./pages/skills";
+import { Home }    from "./pages/home";
+import { Skills }  from "./pages/skills";
 import { Projects } from "./pages/projects";
 import { Contact } from "./pages/contact";
 
@@ -17,36 +16,32 @@ import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 
-
 const Layout = () => {
-   
-    const basename = process.env.BASENAME || "";
-
-    if (!process.env.BACKEND_URL || process.env.BACKEND_URL == "") return <BackendURL />;
-
+  // 2) si falta BACKEND_URL, muestra mensaje (mejor que “romper”)
+  if (!BackendURL || BackendURL === "") {
     return (
-        <div>
-            <BrowserRouter basename={basename}>
-               
-                    <Navbar />
-                    
-                    <Routes>
-                    
-                        <Route element={<Home />} path="/" />
-                        
-                        <Route element={<Skills />} path="/skills" />
-                        <Route element={<Projects />} path="/projects" />
-                        <Route element={<Contact />} path="/contact" />
-                       
-                        <Route element={<h1>Not found!</h1>} />
-                      
-                    </Routes>
-                    
-                    <Footer />
-               
-            </BrowserRouter>
-        </div>
+      <div style={{ padding: "2rem", color: "#fff" }}>
+        Falta la variable <code>BACKEND_URL</code>.<br />
+        Defínela en tu <code>.env</code> (local) o en Vercel → Settings → Environment Variables.
+      </div>
     );
+  }
+
+  // 3) app normal
+  return (
+    <BrowserRouter basename={BASENAME}>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/skills" element={<Skills />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/contact" element={<Contact />} />
+        {/* 404 */}
+        <Route path="*" element={<Home />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
+  );
 };
 
 export default injectContext(Layout);
