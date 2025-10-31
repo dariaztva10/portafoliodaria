@@ -1,4 +1,5 @@
 // src/front/js/layout.js
+console.log("FRONT BACKEND_URL:", process.env.BACKEND_URL);
 // 1) lee variables de entorno (inyectadas por dotenv-webpack)
 const BackendURL = process.env.BACKEND_URL;
 const BASENAME  = process.env.BASENAME || "/";
