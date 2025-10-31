@@ -6,10 +6,10 @@ const BASENAME  = process.env.BASENAME || "/";
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import { Home }    from "./pages/home";
-import { Skills }  from "./pages/skills";
-import { Projects } from "./pages/projects";
-import { Contact } from "./pages/contact";
+import Home     from "./pages/home";
+import Skills   from "./pages/skills";
+import Projects  from "./pages/projects";
+import Contact  from "./pages/contact";
 
 import injectContext from "./store/appContext";
 
