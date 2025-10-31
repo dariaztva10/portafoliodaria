@@ -29,6 +29,11 @@ const injectContext = PassedComponent => {
 			 * store, instead use actions, like this:
 			 **/
 			state.actions.getMessage(); // <---- calling this function from the flux.js actions
+			if (process.env.BACKEND_URL) {
+		    	state.actions.getMessage();
+		  	} else {
+		   		console.warn("BACKEND_URL no está definida. Saltando fetch.");
+		  	}
 		}, []);
 
 		// The initial value for the context is not null anymore, but the current state of this component,
