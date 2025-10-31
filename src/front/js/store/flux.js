@@ -25,7 +25,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			  const base = process.env.BACKEND_URL;
 			  if (!base) return;
 			
-			  const url = `${base}/api/lo-que-sea`; // pon tu ruta real
+			  const url = `${base}/api/hello`;   // pon tu ruta real
 			  try {
 			    const res = await fetch(url);
 			    const ct = res.headers.get("content-type") || "";
