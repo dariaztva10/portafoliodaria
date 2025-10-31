@@ -42,4 +42,3 @@ export default function getState({ getStore, getActions, setStore }) {
 	};
 };
 
-export default getState;
