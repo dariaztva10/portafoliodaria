@@ -1,3 +1,6 @@
+// lee la variable del .env (inyectada por dotenv-webpack)
+const BackendURL = process.env.BACKEND_URL;
+
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
