@@ -1,52 +1,29 @@
-const getState = ({ getStore, getActions, setStore }) => {
-	return {
-		store: {
-			message: null,
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
-		},
-		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-
-			getMessage: async () => {
-			  const base = process.env.BACKEND_URL;
-			  if (!base) return;
-			
-			  const url = `${base}/api/hello`;   // pon tu ruta real
-			  try {
-			    const res = await fetch(url);
-			    const ct = res.headers.get("content-type") || "";
-			
-			    if (!res.ok) {
-			      const text = await res.text();
-			      console.error("Backend error:", res.status, text);
-			      return;
-			    }
-			    if (!ct.includes("application/json")) {
-			      const text = await res.text();
-			      console.error("Not JSON:", text);
-			      return;
-			    }
-			
-			    const data = await res.json();
-			    // ...usa data
-			  } catch (e) {
-			    console.error("Network error:", e);
-			  }
-			},
+// ✅ fallback si no llega la env
+const API_BASE = process.env.BACKEND_URL || "http://127.0.0.1:5001";
+export default function getState({ getStore, getActions, setStore }) {
+  return {
+    store: { /* ... */ },
+    actions: {
+      // ejemplo de acción que llama a tu backend
+      getMessage: async () => {
+        const url = `${API_BASE}/api/hello`; // <-- tu endpoint real
+        try {
+          const res = await fetch(url);
+          const ct = res.headers.get("content-type") || "";
+          if (!res.ok) {
+            console.error("Backend error:", res.status, await res.text());
+            return;
+          }
+          if (!ct.includes("application/json")) {
+            console.error("Not JSON:", await res.text());
+            return;
+          }
+          const data = await res.json();
+          console.log("Mensaje del backend:", data);
+        } catch (e) {
+          console.error("Network error:", e);
+        }
+      },
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();
